@@ -6,6 +6,10 @@ android {
     namespace = "trier.hochschule.ema.intents"
     compileSdk = 35
 
+    viewBinding {
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "trier.hochschule.ema.intents"
         minSdk = 24
