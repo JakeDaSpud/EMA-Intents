@@ -4,19 +4,15 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import java.io.Console;
 
 import trier.hochschule.ema.intents.databinding.ActivityMainBinding;
 
@@ -46,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonOpenWebpage = findViewById(R.id.button_open_webpage);
         Button buttonOpenLocation = binding.buttonOpenLocation;
         Button buttonOpenShareText = binding.buttonShareText;
+        Button buttonLaunchSecondActivity = binding.buttonSecondActivity;
 
         buttonOpenWebpage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 shareText("Hello from CodeLab!");
+            }
+        });
+
+        buttonLaunchSecondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSecondActivity(v);
             }
         });
 
@@ -99,5 +103,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             Log.e(e.toString(), e.getMessage());
         };
+    }
+
+    private void startSecondActivity(View v) {
+        Log.d("startSecondActivity()", "Starting second activity...");
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
     }
 }

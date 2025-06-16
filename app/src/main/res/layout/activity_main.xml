@@ -32,6 +32,12 @@
             android:layout_height="wrap_content"
             android:text="Share Text" />
 
+        <Button
+            android:id="@+id/button_second_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Launch Second Activity" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
