@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonOpenLocation = binding.buttonOpenLocation;
         Button buttonOpenShareText = binding.buttonShareText;
         Button buttonLaunchSecondActivity = binding.buttonSecondActivity;
+        Button buttonLaunchGoogle = binding.buttonGoogleActivity;
 
         buttonOpenWebpage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startSecondActivity(v);
+            }
+        });
+
+        buttonLaunchGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startGoogle(v);
             }
         });
 
@@ -109,5 +117,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d("startSecondActivity()", "Starting second activity...");
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
+    }
+
+    private void startGoogle(View v) {
+        Uri url = Uri.parse("https://www.google.com");
+        Intent intent = new Intent(Intent.ACTION_VIEW, url);
+        intent.setPackage("com.android.chrome");
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(e.toString(), "Error");
+        }
     }
 }
